@@ -1,0 +1,64 @@
+﻿
+@model ParkingSystem.ViewModels.VehicleRegisterViewModel
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Create New Member";
+    ViewBag.TitleDescription = "Create initial member details";
+}
+
+@using (Html.BeginForm("Registration", "VehicleRegister", FormMethod.Post))
+{
+    <h2>Vehicle Registration</h2>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(v => v.RegistrationNumber)
+        </div>
+        <div class="thumbnail">
+            @Html.TextBoxFor(v => v.RegistrationNumber)
+            @Html.ValidationMessageFor(v => v.RegistrationNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(v => v.Make)
+    </div>
+    <div class="thumbnail">
+        @Html.TextBoxFor(v => v.Make)
+    </div>
+
+    <div>
+        @Html.LabelFor(v => v.CarModel)
+    </div>
+    <div class="thumbnail">
+        @Html.TextBoxFor(v => v.CarModel)
+    </div>
+    <div>
+        @Html.LabelFor(v => v.Color)
+    </div>
+    <div class="thumbnail">
+        @Html.TextBoxFor(v => v.Color)
+    </div>
+    <div>
+        @Html.LabelFor(v => v.DateOfPurchase)
+    </div>
+    <div class="thumbnail">
+        @Html.EditorFor(v => v.DateOfPurchase)
+
+    </div>
+    <div>
+        @Html.LabelFor(v => v.ParkingAreaId)
+    </div>
+    <div>
+        @*<select asp-for="ParkingAreaId" asp-items="Model.ParkingAreaList"></select>*@
+        <select name="parkingAreaId">
+            <option value="">Select a number</option>
+            <option value="1">Car Park A</option>
+            <option value="2">Car Park B</option>
+            <option value="3">Car Park C</option>
+        </select>
+    </div>
+
+    <button name="weNo" value="Submit">Register Vehicle</button>
+
+}

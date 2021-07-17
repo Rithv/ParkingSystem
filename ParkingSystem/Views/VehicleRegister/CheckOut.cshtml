@@ -1,0 +1,28 @@
+﻿
+@model ParkingSystem.ViewModels.CheckOutViewModel
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Check Out";
+}
+
+@using (Html.BeginForm("CheckOut", "VehicleRegister", FormMethod.Post))
+{
+    <h2>Check Out</h2>
+    <div class="form-group">
+        <div>
+            @Html.LabelFor(v => v.RegistrationNumber)
+        </div>
+        <div class="thumbnail">
+            @Html.TextBoxFor(v => v.RegistrationNumber)
+            @Html.ValidationMessageFor(v => v.RegistrationNumber, "", new { @class = "text-danger" })
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.Message))
+        {
+            @Html.DisplayFor(v => v.Message)
+        }
+    </div>
+    
+    <button value="Submit">Check Out</button>
+
+}
